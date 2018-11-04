@@ -7,16 +7,31 @@
 // require('./example')
 const events = require('./templates/books/events.js')
 const store = require('./store.js')
-console.log('outside')
+
+const IsWinFunction = function () {
+  if (store.cells[0] !== '' &&
+        store.cells[0] === store.cells[1] &&
+        store.cells[1] === store.cells[2]) {
+    console.log('winner')
+    store.winner = document.getElementById('res1').innerHTML
+    return true
+  }
+  return false
+}
 $(() => {
   // your JS code goes here
   //  $('#create-game').on('click', events.onCreateGameClick)
   store.flag = true
-  console.log('in index js')
-  for (let i = 1; i < 10; i++) {
-    $('#click' + i).on('click', events.clicked)
-    // store.flag = ~store.flag
+  do {
+    for (let i = 1; i < 10; i++) {
+      $('#click' + i).on('click', events.clicked)
+      // console.log(store.over)
+      // store.flag = ~store.flag
+    }
+    store.over = IsWinFunction()
   }
+  while (!store.over)
+
   // $('#click2').on('click', events.clicked)
   // $('#click3').on('click', events.clicked)
   // $('#click4').on('click', events.clicked)
