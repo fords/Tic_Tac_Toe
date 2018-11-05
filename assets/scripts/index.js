@@ -8,62 +8,19 @@
 const events = require('./templates/books/events.js')
 const store = require('./store.js')
 
-const IsWinFunction = function () {
-  if (store.cells[0] !== '' &&
-        store.cells[0] === store.cells[1] &&
-        store.cells[1] === store.cells[2]) {
-    console.log('winner')
-    store.winner = document.getElementById('res1').innerHTML
-    store.over = true
-    return true
-  }
-  return false
-}
 $(() => {
   // your JS code goes here
   //  $('#create-game').on('click', events.onCreateGameClick)
   store.flag = true
-  // window.document.addEventListener('keydown', events.clicked)
-  // if store.over true erase eventlistener
-
-  // if (store.test) {
-  //   window.document.getElementById('click1').addEventListener('click', clicked)
-  //   console.log('testing inside click event')
-  //   window.document.getElementById('click1').removeEventListener('click1', clicked)
-  // }
-  // function clicked () {
-  //   console.log('registered!')
-  //   store.test = false
-  //   if (!store.test) {
-  //     window.document.getElementById('click1').removeEventListener('click1', clicked)
-  //     console.log('remove')
-  //   }
-  // }
-
+  // Listener event listening to mouse click on board game
   for (let i = 1; i < 10; i++) {
     $('#click' + i).on('click', events.clicked)
-    // console.log(store.over)
     // store.flag = ~store.flag
   }
 
+  // console.log('finish looping in event')
   // if (store.over) {
-  //   $('click5').find('*').off()
+  //   console.log('it is over')
   // }
-  console.log('finish looping in event')
-  if (store.over) {
-    console.log('it is over')
-  }
-  // store.over = IsWinFunction()
-
-//  while (!store.over)
-
-  // $('#click2').on('click', events.clicked)
-  // $('#click3').on('click', events.clicked)
-  // $('#click4').on('click', events.clicked)
-  // $('#click5').on('click', events.clicked)
-  // $('#click6').on('click', events.clicked)
-  // $('#click7').on('click', events.clicked)
-  // $('#click8').on('click', events.clicked)
-  // $('#click9').on('click', events.clicked)
 })
 //
