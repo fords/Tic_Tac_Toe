@@ -1,6 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 $background-color: #918cde;
-$font-color: #dfdfdf;
+$font-color: purple;
 $white: #fff;
 $grey: rgb(128, 128, 128);
 $teal: rgb(0, 156, 161);
@@ -8,12 +8,13 @@ $black: #000;
 
 body {
   background-color: $background-color;
+  // background-image: halloween.jpg
 }
 
 .box {
   align-items: center;
   border: 1px solid $white;
-  color: $font-color;
+  color: purple;
   display: center;
   //width: 50%;
   //height: 50%;
@@ -35,6 +36,8 @@ audio {
 .teal {
   background-color: $teal;
 }
+
+
 
 .container {
   //margin: 40;
