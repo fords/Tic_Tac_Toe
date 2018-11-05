@@ -3,6 +3,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../../store.js')
 
+// IsWinFunction checks the game is over and record the winner player token
 const IsWinFunction = function () {
   if (store.cells[0] !== '' &&
         store.cells[0] === store.cells[1] &&
@@ -35,6 +36,8 @@ const IsWinFunction = function () {
   return false
 }
 
+
+// IsTieFunction checks the game is a tie/draw
 const IsTieFunction = function (event) {
   return store.cells.every(checkValAllInArray)
 }
@@ -43,21 +46,19 @@ function checkValAllInArray (arrayVal) {
   return arrayVal !== ''
 }
 
+// clicked function is actively waiting for user to click on the tiles of the createBoard
+// game and remove listener event when game is over
 const clicked = function (event) {
   event.preventDefault()
 
   // console.log('it is clicked. id is ' + this.id)
   // $('#res1').html('')
-  // let flag = true
   let token = 'X'
   if (store.flag === true) {
     token = 'X'
-    // console.log('store XX')
   } else if (store.flag === false) {
     token = '0'
-    // console.log('store Y')
   }
-  // console.log(store.flag)
 
   switch (this.id) {
     case 'click1':
@@ -67,7 +68,6 @@ const clicked = function (event) {
         $('#res1').append(token)
         store.cells[0] = token
         store.flag = !store.flag
-        // console.log(store.flag)
       }
       break
     case 'click2':
