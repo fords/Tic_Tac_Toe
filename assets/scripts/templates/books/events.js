@@ -144,7 +144,7 @@ const clicked = function (event) {
       break
   }
   ui.onClick(this)
-  onMoves() // update API
+  // onMoves() // update API
   const someoneWins = IsWinFunction()
   const itIsTie = IsTieFunction()
   store.over = someoneWins || itIsTie
@@ -197,8 +197,8 @@ const onCreateGame = function (event) {
   // start
   for (let i = 1; i < 10; i++) {
     $('#res' + i).html(' ')
-    $('#res' + i).append(' i ')
-    store.cells = ['', '', '', '', '', '', '', '', '']
+    $('#res' + i).append('.')
+    store.cells[i - 1] = ''
   }
   api.createGame()
     .then(ui.createSuccess)
@@ -206,7 +206,7 @@ const onCreateGame = function (event) {
 }
 
 const onMoves = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   api.userMoves(store.i, store.cells[store.i], store.over)
     .then(ui.movesSuccess)
     .catch(ui.movesSuccess)
@@ -220,13 +220,13 @@ const onGetGames = function (event) {
 }
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
+  // $('#sign-up').on('submit', onSignUp)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#newGame').on('click', onCreateGame)
-  $('#getGames').one('click', onGetGames)
+  $('#getGames').on('click', onGetGames)
 }
 module.exports = {
   clicked,
