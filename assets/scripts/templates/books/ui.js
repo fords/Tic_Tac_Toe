@@ -33,6 +33,7 @@ const signOutSuccess = function () {
   // $('.container').css('display', 'none')
   $('.userButtons').css('display', 'none')
   $('.sign-inup-buttons').css('display', 'block')
+  $('.userInfo').css('display', 'none')
   store.user = null
 }
 
