@@ -14,6 +14,7 @@ const IsWinFunction = function () {
         store.cells[1] === store.cells[2]) {
     console.log('winner')
     store.winner = document.getElementById('res1').innerHTML
+    store.over = true
     return true
   }
   return false
@@ -22,15 +23,39 @@ $(() => {
   // your JS code goes here
   //  $('#create-game').on('click', events.onCreateGameClick)
   store.flag = true
-  do {
-    for (let i = 1; i < 10; i++) {
-      $('#click' + i).on('click', events.clicked)
-      // console.log(store.over)
-      // store.flag = ~store.flag
-    }
-    store.over = IsWinFunction()
+  // window.document.addEventListener('keydown', events.clicked)
+  // if store.over true erase eventlistener
+
+  // if (store.test) {
+  //   window.document.getElementById('click1').addEventListener('click', clicked)
+  //   console.log('testing inside click event')
+  //   window.document.getElementById('click1').removeEventListener('click1', clicked)
+  // }
+  // function clicked () {
+  //   console.log('registered!')
+  //   store.test = false
+  //   if (!store.test) {
+  //     window.document.getElementById('click1').removeEventListener('click1', clicked)
+  //     console.log('remove')
+  //   }
+  // }
+
+  for (let i = 1; i < 10; i++) {
+    $('#click' + i).on('click', events.clicked)
+    // console.log(store.over)
+    // store.flag = ~store.flag
   }
-  while (!store.over)
+
+  // if (store.over) {
+  //   $('click5').find('*').off()
+  // }
+  console.log('finish looping in event')
+  if (store.over) {
+    console.log('it is over')
+  }
+  // store.over = IsWinFunction()
+
+//  while (!store.over)
 
   // $('#click2').on('click', events.clicked)
   // $('#click3').on('click', events.clicked)

@@ -3,7 +3,8 @@
 
 const store = {
   cells: ['', '', '', '', '', '', '', '', ''],
-  over: false
+  over: false,
+  test: true
 }
 
 module.exports = store
