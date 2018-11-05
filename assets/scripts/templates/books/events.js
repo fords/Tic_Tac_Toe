@@ -7,12 +7,40 @@ const IsWinFunction = function () {
   if (store.cells[0] !== '' &&
         store.cells[0] === store.cells[1] &&
         store.cells[1] === store.cells[2]) {
-    console.log('winner')
     store.winner = document.getElementById('res1').innerHTML
-    console.log(store.winner)
+    return true
+  }
+  if (store.cells[3] !== '' && store.cells[3] === store.cells[4] && store.cells[4] === store.cells[5]) {
+    store.winner = document.getElementById('res4').innerHTML
+    return true
+  } else if (store.cells[6] !== '' && store.cells[6] === store.cells[7] && store.cells[7] === store.cells[8]) {
+    store.winner = document.getElementById('res7').innerHTML
+    return true
+  } else if (store.cells[0] !== '' && store.cells[0] === store.cells[3] && store.cells[3] === store.cells[6]) {
+    store.winner = document.getElementById('res1').innerHTML
+    return true
+  } else if (store.cells[1] !== '' && store.cells[1] === store.cells[4] && store.cells[4] === store.cells[7]) {
+    store.winner = document.getElementById('res2').innerHTML
+    return true
+  } else if (store.cells[2] !== '' && store.cells[2] === store.cells[5] && store.cells[5] === store.cells[8]) {
+    store.winner = document.getElementById('res3').innerHTML
+    return true
+  } else if (store.cells[0] !== '' && store.cells[0] === store.cells[4] && store.cells[4] === store.cells[8]) {
+    store.winner = document.getElementById('res1').innerHTML
+    return true
+  } else if (store.cells[2] !== '' && store.cells[2] === store.cells[4] && store.cells[4] === store.cells[6]) {
+    store.winner = document.getElementById('res3').innerHTML
     return true
   }
   return false
+}
+
+const IsTieFunction = function (event) {
+  return store.cells.every(checkValAllInArray)
+}
+
+function checkValAllInArray (arrayVal) {
+  return arrayVal !== ''
 }
 
 const clicked = function (event) {
@@ -108,7 +136,20 @@ const clicked = function (event) {
       break
   }
   ui.onClick(this)
-  store.over = IsWinFunction()
+  const someoneWins = IsWinFunction()
+  const itIsTie = IsTieFunction()
+  store.over = someoneWins || itIsTie
+  // console.log('tie function return ' + a)
+  if (store.over) {
+    for (let i = 1; i < 10; i++) {
+      $('#click' + i).unbind()
+    }
+    if (someoneWins) {
+      console.log(store.winner + ' wins ')
+    } else if (itIsTie) {
+      console.log(' it is a tie')
+    }
+  }
 }
 
 module.exports = {
