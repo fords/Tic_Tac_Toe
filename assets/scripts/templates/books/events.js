@@ -1,4 +1,4 @@
-// const getFormFields = require('../../lib/get-form-fields')    error path
+const getFormFields = require('../../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../../store.js')
@@ -36,7 +36,6 @@ const IsWinFunction = function () {
   return false
 }
 
-
 // IsTieFunction checks the game is a tie/draw
 const IsTieFunction = function (event) {
   return store.cells.every(checkValAllInArray)
@@ -67,6 +66,7 @@ const clicked = function (event) {
         $('#res1').html('')
         $('#res1').append(token)
         store.cells[0] = token
+        store.i = 0
         store.flag = !store.flag
       }
       break
@@ -75,6 +75,7 @@ const clicked = function (event) {
         $('#res2').html('')
         $('#res2').append(token)
         store.cells[1] = token
+        store.i = 1
         store.flag = !store.flag
       }
       break
@@ -83,6 +84,7 @@ const clicked = function (event) {
         $('#res3').html('')
         $('#res3').append(token)
         store.cells[2] = token
+        store.i = 2
         store.flag = !store.flag
       }
       break
@@ -91,6 +93,7 @@ const clicked = function (event) {
         $('#res4').html('')
         $('#res4').append(token)
         store.cells[3] = token
+        store.i = 3
         store.flag = !store.flag
       }
       break
@@ -99,6 +102,7 @@ const clicked = function (event) {
         $('#res5').html('')
         $('#res5').append(token)
         store.cells[4] = token
+        store.i = 4
         store.flag = !store.flag
       }
       break
@@ -107,6 +111,7 @@ const clicked = function (event) {
         $('#res6').html('')
         $('#res6').append(token)
         store.cells[5] = token
+        store.i = 5
         store.flag = !store.flag
       }
       break
@@ -115,6 +120,7 @@ const clicked = function (event) {
         $('#res7').html('')
         $('#res7').append(token)
         store.cells[6] = token
+        store.i = 6
         store.flag = !store.flag
       }
       break
@@ -123,6 +129,7 @@ const clicked = function (event) {
         $('#res8').html('')
         $('#res8').append(token)
         store.cells[7] = token
+        store.i = 7
         store.flag = !store.flag
       }
       break
@@ -131,11 +138,13 @@ const clicked = function (event) {
         $('#res9').html('')
         $('#res9').append(token)
         store.cells[8] = token
+        store.i = 8
         store.flag = !store.flag
       }
       break
   }
   ui.onClick(this)
+  onMoves() // update API
   const someoneWins = IsWinFunction()
   const itIsTie = IsTieFunction()
   store.over = someoneWins || itIsTie
@@ -152,6 +161,74 @@ const clicked = function (event) {
   }
 }
 
+const onSignUp = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.failure)
+}
+
+const onSignIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.failure)
+}
+
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.failure)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.failure)
+}
+
+const onCreateGame = function (event) {
+  event.preventDefault()
+  // start
+  for (let i = 1; i < 10; i++) {
+    $('#res' + i).html(' ')
+    $('#res' + i).append(' i ')
+    store.cells = ['', '', '', '', '', '', '', '', '']
+  }
+  api.createGame()
+    .then(ui.createSuccess)
+    .catch(ui.createSuccess)
+}
+
+const onMoves = function (event) {
+  event.preventDefault()
+  api.userMoves(store.i, store.cells[store.i], store.over)
+    .then(ui.movesSuccess)
+    .catch(ui.movesSuccess)
+}
+
+const onGetGames = function (event) {
+  event.preventDefault()
+  api.getGames()
+    .then(ui.getGamesSuccess)
+    .catch(ui.getGamesSuccess)
+}
+
+const addHandlers = () => {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('submit', onSignOut)
+  $('#newGame').on('click', onCreateGame)
+  $('#getGames').one('click', onGetGames)
+}
 module.exports = {
-  clicked
+  clicked,
+  addHandlers
 }
