@@ -5,12 +5,20 @@ The user has the ability to see the game history during log in. Furthermore, use
 
 
 ## List of Technologies Used
-HTML5
-CSS
-Bootstrap
-javascript
-JQuery
+<ul>
+<li> HTML5 </li>
+<li> CSS</li>
+<li> Bootstrap</li>
+<li> javascript</li>
+<li> JQuery</li>
+</ul>
 
 ## Wireframe
 ![Alt Wireframe 1](part1.png?raw=true)
 ![Alt Wireframe 2](part2.png?raw=true)
+
+## Future Work
+Style the page and add margin in CSS </br>
+Make computer AI game </br>
+Sound effect during match </br>
+Make multiplayers game </br>
