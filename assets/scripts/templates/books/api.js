@@ -58,6 +58,7 @@ const userMoves = function (index, value, over) {
     },
     data: {
       'game': {
+        // 'winner': winner,
         'cell': {
           'index': index,
           'value': value
