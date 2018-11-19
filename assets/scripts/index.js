@@ -17,7 +17,7 @@ $(() => {
     $('#click' + i).on('click', events.clicked)
     // store.flag = ~store.flag
   }
-
+  events.addHandlers()
   // console.log('finish looping in event')
   // if (store.over) {
   //   console.log('it is over')
