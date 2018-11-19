@@ -143,8 +143,9 @@ const clicked = function (event) {
       }
       break
   }
-  ui.onClick(this)
-  // onMoves() // update API
+
+  // ui.onClick(this)
+  onMoves() // update API
   const someoneWins = IsWinFunction()
   const itIsTie = IsTieFunction()
   store.over = someoneWins || itIsTie
@@ -208,21 +209,21 @@ const onCreateGame = function (event) {
   }
   api.createGame()
     .then(ui.createSuccess)
-    .catch(ui.createSuccess)
+    .catch(ui.failure)
 }
 
 const onMoves = function (event) {
   // event.preventDefault()
   api.userMoves(store.i, store.cells[store.i], store.over)
     .then(ui.movesSuccess)
-    .catch(ui.movesSuccess)
+    .catch(ui.failure)
 }
 
 const onGetGames = function (event) {
   event.preventDefault()
   api.getGames()
     .then(ui.getGamesSuccess)
-    .catch(ui.getGamesSuccess)
+    .catch(ui.failure)
 }
 
 const addHandlers = () => {
