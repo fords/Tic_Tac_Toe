@@ -14,26 +14,17 @@
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
-<!-- <body background = "halloween.jpg"> -->
-  <!-- <div id="background">
-    Your inner content
-  </div>   -->
-  <h1>Fun Game</h1>
-  <h2>Horsing around Tic </h2>
-  <div class="sign-inup-buttons">
-              <button type="button" class="button"><a href="#sign-up">Sign up</a></button>
-              <button type="button" class="button"><a href="#signIn">Sign in</a></button>
-  </div>
+  <h1> Tic Tac Toe Game</h1>
 
   <div class='signInUp'>
         <div id="signUp">
           <form id="sign-up">
             <fieldset>
-              <h2>Sign Up!</h2>
+              <h2>Sign Up Here</h2>
               <input type="email" name="credentials[email]" placeholder="Email"><br>
               <input type="password" name="credentials[password]" placeholder="Password"><br>
               <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"><br>
-              <input type="submit" value="Sign Up!">
+              <input type="submit" value="Sign Up">
             </fieldset>
           </form>
         </div>
@@ -41,49 +32,40 @@
         <div id="signIn">
           <form id="sign-in">
               <fieldset>
-                <h2>Sign In!</h2>
+                <h2>Sign In Here</h2>
                 <input type="text" name="credentials[email]" placeholder="Email"><br>
                 <input type="password" name="credentials[password]" placeholder="Password"><br>
-                <input type="submit" value="Sign In!">
+                <input type="submit" value="Sign In">
               </fieldset>
-            </form>
-          </div>
+          </form>
+        </div>
   </div>
 
-  <div id='userMessage'></div>
-
-  <!-- <form>
-    <input name="credentials[email]" type="text" value="email address">
-    <input name="credentials[email]" type="submit" value="submit">
-    <input name="credentials[password]" type="password" value="an example password">
-    <input name="credentials[password_confirmation]" type="password" value="an example password">
-  </form> -->
-
+  <div id='feedbackOnAction'> <br> </div>
   <!-- <div class="col-xs-12" style="height:50px;"> </div> -->
-  <div class='userButtons'>
-            <div id='score'></div>
-            <div class='buttons'>
-              <button class = 'button' id='newGame'>New Game</button>
-            </div>
+  <div  class='gameStatus'>
+    <form id="sign-out">
+      <input type="submit" class='button' value="Sign Out">
+    </form>
+    <form id="change-password">
+        <br>
+        <h3>Change Password</h3>
+        <input type="password" name="passwords[old]" placeholder="Old Password"><br>
+        <input type="password" name="passwords[new]" placeholder="New Password"><br>
+        <input type="submit" value="Change Password">
+    </form>
+    <div id="changedPassword"> </div>
   </div>
 
-  <div class='userInfo'>
-    <button class = 'button' id='changePassword'>Change Password</button>
+  <div class='NewGameReset'>
+      <div id='score'></div>
+      <div class='buttons'>
+          <button class = 'button' id='newGame'>New Game</button>
+      </div>
+  </div>
+
+  <div class='gameStatus'>
     <button class = 'button' id='getGames'>Old Games</button>
-    <form id="sign-out">
-      <input type="submit" class='button' value="Sign Out!">
-    </form>
-    <div>
-      <form id="change-password" class="border">
-        <fieldset>
-          <h3>Change Password</h3>
-          <input type="password" name="passwords[old]" placeholder="Old Password"><br>
-          <input type="password" name="passwords[new]" placeholder="New Password"><br><br>
-          <input type="submit" value="Change Password">
-        </fieldset>
-      </form>
-      <div id="changedPassword"></div>
-    </div>
     <div id='view-games'>
       <h3>Previous Games</h3>
     </div>
@@ -91,7 +73,7 @@
 
 
   <div class="container">
-    <h2>Game</h2>
+    <!-- <h2>Game</h2> -->
     <h3 id = 'status' > Status </h3>
     <div class="row">
       <div class="col-3 col-md-3 tile square box teal" id="click1"  > <!--  onclick="myFunction()"> -->
@@ -153,24 +135,7 @@
     </div>
   </div>
 
-
-
-  <!-- <div id='test' > click </div> -->
-  <!-- <script  type="module" src="assets/scripts/index.js"
-
-    // document.getElementById("demo4").addEventListener("click", clicked());
-
-     // function myFunction() {
-     //     document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
-     //  }
-
-    //$('#demo').on('click', test() )
-    //
-    // function clicked() {
-    //      document.getElementById("demo4").innerHTML = "YOU CLICKED ME!";
-    //   } tictactoe_new/assets/scripts/index.js"
-   </script>  > -->
-   <audio controls loop autoplay>
+   <audio id="gamePlay" controls loop autoplay>
      <source src="01-main-theme-overworld.mp3" type="audio/ogg">
      <source src="01-main-theme-overworld.mp3" type="audio/mpeg">
    Your browser does not support the audio element.

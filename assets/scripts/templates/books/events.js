@@ -154,9 +154,12 @@ const clicked = function (event) {
       $('#click' + i).unbind()
     }
     if (someoneWins) {
-      console.log(store.winner + ' wins ')
+      $('#status').html(' ')
+      $('#status').text('Player ' + store.winner + ' wins!!!')
+      // console.log(store.winner + ' wins ')
     } else if (itIsTie) {
-      console.log(' it is a tie')
+      $('#status').html(' ')
+      $('#status').text('It is a tie.')
     }
   }
 }
@@ -182,7 +185,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(this)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
-    .catch(ui.failure)
+    .catch(ui.passwordFailure)
 }
 
 const onSignOut = function (event) {
@@ -199,6 +202,9 @@ const onCreateGame = function (event) {
     $('#res' + i).html(' ')
     $('#res' + i).append('.')
     store.cells[i - 1] = ''
+  }
+  for (let i = 1; i < 10; i++) {
+    $('#click' + i).on('click', clicked)
   }
   api.createGame()
     .then(ui.createSuccess)
