@@ -11,7 +11,12 @@ $(() => {
     $('#click' + i).on('click', events.clicked)
   }
   events.addHandlers()
-  // document.getElementById("gamePlay").autoplay;
+//   $(document).ready(function() {
+//     const x = document.getElementById("gamePlay")
+//     x.autoplay()
+// })
+  // document.getElementById("gamePlay").autoplay
+
   $('.gameStatus').css('display', 'none')
   $('.container').css('display', 'none')
   $('.NewGameReset').css('display', 'none')
